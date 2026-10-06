@@ -3,377 +3,489 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#18243b">
+<meta name="theme-color" content="#132238">
 <title>رهبر بازتابی | Reflective Leader</title>
 <style>
 :root{
- --navy:#18243b;--navy2:#263a5b;--ink:#24303d;--muted:#6d7783;--paper:#f6f3ed;
- --card:#fff;--line:#e5ded3;--gold:#c79547;--gold2:#e9cc98;--sage:#70877c;
- --soft:#edf1f6;--green:#56766a;--shadow:0 18px 55px rgba(24,36,59,.10)
+ --navy:#132238;--navy2:#213a58;--ink:#24313d;--muted:#6b7784;--paper:#f6f2eb;
+ --card:#fff;--line:#e7dfd4;--gold:#c8944a;--gold2:#edcf9c;--sage:#73887c;
+ --soft:#eef2f4;--green:#557367;--shadow:0 20px 60px rgba(19,34,56,.10)
 }
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:Tahoma,"Segoe UI",Arial,sans-serif;line-height:1.8}
-button,input,textarea{font:inherit}button{cursor:pointer}
-.wrap{max-width:1050px;margin:auto;padding:0 20px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Tahoma,"Segoe UI",Arial,sans-serif;line-height:1.85}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1120px;margin:auto;padding:0 22px}
 .view{display:none}.view.active{display:block}
-nav,.apphead{position:sticky;top:0;z-index:20;background:rgba(246,243,237,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.navrow,.apphead .wrap{height:70px;display:flex;align-items:center;justify-content:space-between;gap:14px}
-.brand{display:flex;align-items:center;gap:10px}.mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,var(--navy),#405778);position:relative;box-shadow:0 8px 22px rgba(24,36,59,.2)}
-.mark:before,.mark:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.8);border-radius:50%}
-.mark:before{inset:8px}.mark:after{inset:14px;background:#e8cb96}
-.brand b{display:block;color:var(--navy);font-size:14px}.brand span{display:block;color:var(--muted);font-size:10px;direction:ltr}
-.navhint{font-size:11px;color:var(--muted)}
-.hero{min-height:calc(100vh - 70px);display:grid;align-items:center;background:
- radial-gradient(circle at 16% 16%,rgba(199,149,71,.15),transparent 27%),
- radial-gradient(circle at 84% 82%,rgba(112,135,124,.14),transparent 28%),
- linear-gradient(135deg,#111b2d,#21344f 62%,#17243a);color:#fff}
-.hero .wrap{width:100%;display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center;padding-top:54px;padding-bottom:54px}
-.eyebrow{font-size:11px;color:#efce93;font-weight:900;letter-spacing:.05em}
-h1{font-size:clamp(38px,5vw,61px);line-height:1.22;margin:12px 0 16px;letter-spacing:-.03em}
-.hero p{font-size:16px;line-height:1.9;color:#d6e0eb;max-width:640px;margin:0 0 26px}
-.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{min-height:47px;border-radius:13px;padding:11px 17px;font-weight:900;border:1px solid transparent}
-.primary{background:var(--gold);color:#17243a}.secondary{background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.2)}
-.start-card{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:26px;padding:25px;backdrop-filter:blur(10px);box-shadow:0 28px 75px rgba(0,0,0,.18)}
-.start-card .label{font-size:11px;color:#f0cf95;font-weight:900}.start-card h3{font-size:21px;margin:8px 0 8px}.start-card p{font-size:12px;line-height:1.8;color:#cbd8e5;margin:0 0 15px}
-.mini-flow{display:grid;gap:8px}.mini-step{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:9px 10px}
-.mini-step i{width:27px;height:27px;border-radius:9px;background:#f0ce94;color:#17243a;display:grid;place-items:center;font-style:normal;font-size:10px;font-weight:900;flex:0 0 auto}
-.mini-step b{font-size:11px}.mini-step span{display:block;color:#aebfce;font-size:9px}
-.app{min-height:100vh}.backhome{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:11px;padding:8px 11px;font-weight:900}
-.stagewrap{padding:30px 20px 70px}.progress-top{display:flex;justify-content:space-between;gap:14px;margin-bottom:11px;align-items:center}
-.progress-top b{font-size:13px;color:var(--navy)}.progress-top span{font-size:11px;color:var(--muted)}
-.bar{height:8px;border-radius:999px;background:#e9e2d8;overflow:hidden}.bar i{display:block;height:100%;width:14.28%;background:linear-gradient(90deg,var(--gold),var(--sage));transition:.25s}
-.stagegrid{display:grid;grid-template-columns:minmax(0,1fr) 235px;gap:17px;margin-top:22px}.maincard,.sidecard{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 5px 18px rgba(24,36,59,.04)}
-.maincard{padding:27px}.sidecard{padding:17px;height:max-content;position:sticky;top:92px}.stage-no{font-size:10px;color:#9d773d;font-weight:900}
-.maincard h2{font-size:clamp(26px,4vw,39px);line-height:1.35;margin:7px 0 9px;color:var(--navy)}
-.lead{font-size:14px;color:var(--muted);max-width:720px;margin:0 0 20px}
-.question{border:1px solid var(--line);border-radius:17px;padding:16px;margin:13px 0;background:#fbfaf7}.question>label,.question>strong{display:block;color:var(--navy);font-size:12px;font-weight:900;margin-bottom:8px}
-.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.choice{border:1px solid var(--line);background:#fff;border-radius:13px;padding:11px;text-align:right;color:#43505e;min-height:52px}
+
+/* shared */
+.brand{display:flex;align-items:center;gap:11px}
+.mark{width:40px;height:40px;border-radius:13px;background:linear-gradient(145deg,var(--navy),#42617f);position:relative;box-shadow:0 8px 22px rgba(19,34,56,.20)}
+.mark:before,.mark:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.82);border-radius:50%}
+.mark:before{inset:8px}.mark:after{inset:14px;background:var(--gold2)}
+.brand b{display:block;color:var(--navy);font-size:15px}
+.brand span{display:block;color:var(--muted);font-size:10px;direction:ltr}
+.btn{min-height:48px;border-radius:14px;padding:11px 18px;font-weight:900;border:1px solid transparent}
+.btn.primary{background:var(--navy);color:#fff}
+.btn.gold{background:var(--gold);color:#16253a}
+.btn.ghost{background:#fff;color:var(--navy);border-color:var(--line)}
+.eyebrow{font-size:11px;font-weight:900;color:#9d7439;letter-spacing:.05em}
+.kicker{font-size:10px;color:#9d7439;font-weight:900}
+h1,h2,h3,p{margin-top:0}
+
+/* landing */
+.topnav{position:sticky;top:0;z-index:30;background:rgba(246,242,235,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(231,223,212,.92)}
+.navrow{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.navlinks{display:flex;align-items:center;gap:8px}
+.navlinks button{border:0;background:transparent;color:#586574;padding:8px 10px;border-radius:10px;font-size:11px}
+.navlinks button:hover{background:#fff;color:var(--navy)}
+.hero{padding:48px 0 36px}
+.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:46px;align-items:center}
+.hero-copy .eyebrow{margin-bottom:8px}
+.hero h1{font-size:clamp(44px,6vw,72px);line-height:1.08;letter-spacing:-.035em;color:var(--navy);margin-bottom:12px}
+.hero h1 small{display:block;font-size:.28em;letter-spacing:.12em;color:#7c8893;margin-bottom:10px;direction:ltr;text-align:right}
+.hero-tagline{font-size:23px;line-height:1.5;color:#2f4151;margin-bottom:15px;font-weight:800}
+.hero-copy>p{font-size:14px;color:var(--muted);max-width:640px;line-height:1.95}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.hero-note{margin-top:16px;font-size:10px;color:#8a949e}
+.art{position:relative;border-radius:30px;overflow:hidden;min-height:520px;background:#dfe7ea;box-shadow:var(--shadow);border:1px solid #dce4e5}
+.art svg{display:block;width:100%;height:100%;min-height:520px}
+.art-card{position:absolute;right:22px;left:22px;bottom:20px;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.68);border-radius:18px;padding:14px 16px;box-shadow:0 14px 36px rgba(19,34,56,.12)}
+.art-card b{display:block;color:var(--navy);font-size:12px}.art-card span{display:block;color:#657481;font-size:10px;margin-top:3px}
+.section{padding:58px 0}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:22px}
+.sectionhead h2{font-size:clamp(28px,4vw,43px);line-height:1.25;color:var(--navy);margin:5px 0 0}
+.sectionhead p{max-width:520px;font-size:12px;color:var(--muted);margin:0}
+.idea-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.idea-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:19px;min-height:190px}
+.idea-card .n{font-size:10px;color:#9c7338;font-weight:900}.idea-card h3{font-size:17px;color:var(--navy);margin:11px 0 6px}.idea-card p{font-size:11px;color:var(--muted);margin:0}
+.idea-card strong{display:block;margin-top:12px;color:#4d665e;font-size:10px}
+.logic{background:#ebe6dd}
+.logic-track{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.logic-step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;min-height:155px;position:relative}
+.logic-step .num{width:28px;height:28px;border-radius:9px;background:#f2dfbd;color:#745526;display:grid;place-items:center;font-size:10px;font-weight:900;margin-bottom:12px}
+.logic-step h3{font-size:14px;color:var(--navy);margin-bottom:5px}.logic-step p{font-size:10px;color:var(--muted);margin:0}
+.cta-band{background:linear-gradient(135deg,#14253b,#243d5b);color:#fff;border-radius:26px;padding:26px 28px;display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center}
+.cta-band h3{font-size:25px;margin:0 0 5px}.cta-band p{font-size:12px;color:#cbd8e4;margin:0;max-width:720px}
+footer{padding:24px 0 30px;color:#89939d;font-size:10px;text-align:center}
+
+/* app */
+.app{min-height:100vh}
+.apphead{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.apphead .wrap{height:72px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.backhome{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:11px;padding:8px 11px;font-weight:900}
+.stagewrap{padding:30px 22px 70px}
+.progress-top{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:10px}
+.progress-top b{font-size:13px;color:var(--navy)}.progress-top span{font-size:10px;color:var(--muted)}
+.bar{height:8px;border-radius:999px;background:#e8e1d6;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--sage));transition:.25s}
+.stagegrid{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:18px;margin-top:22px}
+.maincard,.sidecard{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 6px 20px rgba(19,34,56,.04)}
+.maincard{padding:27px}.sidecard{padding:17px;height:max-content;position:sticky;top:94px}
+.stage-no{font-size:10px;color:#9d773d;font-weight:900}
+.maincard h2{font-size:clamp(27px,4vw,40px);line-height:1.35;color:var(--navy);margin:7px 0 8px}
+.lead{font-size:14px;color:var(--muted);margin:0 0 19px;max-width:760px}
+.question{border:1px solid var(--line);border-radius:17px;padding:16px;margin:12px 0;background:#fbfaf7}
+.question>label,.question>strong{display:block;color:var(--navy);font-size:12px;font-weight:900;margin-bottom:8px}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.choice{border:1px solid var(--line);background:#fff;border-radius:13px;padding:11px;text-align:right;color:#43505e;min-height:52px}
 .choice.active{background:#f7f0e4;border-color:#c8a56d;color:var(--navy);box-shadow:0 0 0 1px rgba(199,149,71,.08)}
-textarea{width:100%;border:1px solid var(--line);border-radius:13px;padding:12px;min-height:92px;resize:vertical;background:#fff;color:var(--ink);outline:none}
+.mini-copy{font-size:10px;color:var(--muted);margin-top:7px}
+textarea{width:100%;border:1px solid var(--line);border-radius:13px;padding:12px;min-height:90px;resize:vertical;background:#fff;color:var(--ink);outline:none}
 textarea:focus{border-color:#c8a56d;box-shadow:0 0 0 3px rgba(199,149,71,.10)}
 .slider-row{display:grid;grid-template-columns:1fr 180px;gap:16px;align-items:center;padding:13px 0;border-top:1px solid var(--line)}.slider-row:first-child{border-top:0}
 .slider-row b{display:block;font-size:12px;color:var(--navy)}.slider-row span{display:block;font-size:10px;color:var(--muted)}
 input[type=range]{width:100%;accent-color:var(--gold)}.scale-labels{display:flex;justify-content:space-between;font-size:9px;color:#8a949f;margin-top:2px}
+.reflectbox{background:#eef3f1;border:1px solid #d4e1dc;border-radius:15px;padding:13px;margin-top:12px}
+.reflectbox b{display:block;color:#4f6d63;font-size:11px}.reflectbox p{font-size:11px;color:#596b65;margin:4px 0 0}
+.challenge-grid{display:grid;gap:8px}.challenge{border:1px solid var(--line);border-radius:14px;padding:13px;background:#fff}
+.challenge .statement{font-size:12px;color:var(--navy);font-weight:900;margin-bottom:7px}.agree-row{display:flex;gap:6px;flex-wrap:wrap}
+.agree-row button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 9px;font-size:9px;color:#687582}
+.agree-row button.active{background:#f5ead6;border-color:#c7a36a;color:#755624;font-weight:900}
 .rolegrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.rolecard{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff;position:relative}
 .rolecard.reco{border-color:#c7a36c;background:#fbf7ef}.rolecard .tag{position:absolute;left:10px;top:10px;font-size:8px;border-radius:999px;padding:3px 6px;background:#f2e4ca;color:#725424;font-weight:900}
 .rolecard h3{margin:0 0 2px;color:var(--navy);font-size:16px}.rolecard .pronoun{font-size:10px;color:#9b7337;font-weight:900}.rolecard p{font-size:10px;color:var(--muted);margin:7px 0 0}
 .rolebars{margin-top:16px;display:grid;gap:8px}.rolebar{display:grid;grid-template-columns:82px 1fr 34px;gap:8px;align-items:center}.rolebar b{font-size:10px;color:var(--navy)}.rolebar .track{height:8px;background:#ebe5dc;border-radius:999px;overflow:hidden}.rolebar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--sage));border-radius:999px}.rolebar span{font-size:9px;color:var(--muted);text-align:left}
 .mixgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mixbox{border:1px solid var(--line);border-radius:16px;padding:13px}.mixbox label{display:block;font-size:10px;color:var(--muted);margin-bottom:6px}.mixbox select{width:100%;border:1px solid var(--line);border-radius:11px;padding:10px;background:#fff;color:var(--navy);font-weight:800}
 .idea{background:#f8f4ec;border:1px solid #eadcc3;border-radius:16px;padding:16px;font-size:13px;color:#354352}.idea b{color:var(--navy)}
-.actioncards{display:grid;gap:8px}.actioncard{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff}.actioncard b{display:block;font-size:12px;color:var(--navy)}.actioncard span{font-size:10px;color:var(--muted)}
-.result{border:1px solid #d7c49e;background:linear-gradient(180deg,#fff,#fbf7ef);border-radius:20px;padding:20px}.result h3{font-size:20px;color:var(--navy);margin:0 0 5px}.result .sub{font-size:11px;color:var(--muted);margin-bottom:16px}.resultgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.resultitem{border:1px solid var(--line);background:#fff;border-radius:13px;padding:11px}.resultitem label{font-size:9px;color:#8a949f;display:block}.resultitem b{font-size:11px;color:var(--navy)}
-.reflectq{margin-top:12px;border-radius:14px;background:#eef3f1;border:1px solid #d3e2dc;padding:13px}.reflectq b{display:block;color:#4f6d63;font-size:11px}.reflectq p{font-size:11px;color:#556761;margin:4px 0 0}
+.actioncards{display:grid;gap:8px}.actioncard{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff;text-align:right}.actioncard b{display:block;font-size:12px;color:var(--navy)}.actioncard span{font-size:10px;color:var(--muted)}
+.result{border:1px solid #d7c49e;background:linear-gradient(180deg,#fff,#fbf7ef);border-radius:20px;padding:20px}.result h3{font-size:20px;color:var(--navy);margin:0 0 5px}.result .sub{font-size:11px;color:var(--muted);margin-bottom:16px}
+.resultgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.resultitem{border:1px solid var(--line);background:#fff;border-radius:13px;padding:11px}.resultitem label{font-size:9px;color:#8a949f;display:block}.resultitem b{font-size:11px;color:var(--navy)}
 .stage-actions{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:23px}.stage-actions button{min-height:44px;border-radius:12px;padding:9px 13px;font-weight:900}
 .next{background:var(--navy);color:#fff;border:1px solid var(--navy)}.prev{background:#fff;color:var(--navy);border:1px solid var(--line)}
 .sidecard h3{font-size:13px;color:var(--navy);margin:0 0 11px}.pathlist{display:grid;gap:7px}.pathitem{border:1px solid var(--line);border-radius:12px;padding:8px 9px;font-size:10px;color:var(--muted);background:#fff}
 .pathitem.current{border-color:#b99761;background:#fbf7ef;color:var(--navy);font-weight:900}.pathitem.done{background:#f1f6f4;color:#46675d}
 .note{margin-top:13px;padding-top:12px;border-top:1px solid var(--line);font-size:9px;color:var(--muted)}
-.booklogic{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}.booklogic details{border:1px solid var(--line);border-radius:13px;padding:10px 12px}.booklogic summary{font-size:11px;color:var(--navy);font-weight:900;cursor:pointer}
-.booklogic div{font-size:10px;color:var(--muted);margin-top:8px}
-footer{padding:19px;text-align:center;color:#8a949f;font-size:9px}
-@media(max-width:850px){.hero{min-height:auto}.hero .wrap{grid-template-columns:1fr;padding-top:44px;padding-bottom:44px}.start-card{max-width:620px}.stagegrid{grid-template-columns:1fr}.sidecard{position:static}.slider-row{grid-template-columns:1fr}}
-@media(max-width:560px){.wrap{padding:0 14px}.navhint{display:none}.hero .wrap{gap:29px}.hero p{font-size:14px}h1{font-size:35px}.actions{display:grid;grid-template-columns:1fr}.btn{width:100%}.start-card{padding:19px}.stagewrap{padding:23px 11px 52px}.maincard{padding:18px}.choice-grid,.rolegrid,.mixgrid,.resultgrid{grid-template-columns:1fr}.progress-top{align-items:flex-start}.rolebar{grid-template-columns:70px 1fr 30px}}
+.booklogic{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}.booklogic details{border:1px solid var(--line);border-radius:13px;padding:10px 12px}.booklogic summary{font-size:11px;color:var(--navy);font-weight:900;cursor:pointer}.booklogic div{font-size:10px;color:var(--muted);margin-top:8px}
+
+@media(max-width:900px){
+ .hero-grid{grid-template-columns:1fr}.art{min-height:410px}.art svg{min-height:410px}
+ .idea-grid,.logic-track{grid-template-columns:1fr 1fr}.stagegrid{grid-template-columns:1fr}.sidecard{position:static}
+ .slider-row{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+ .wrap{padding:0 14px}.navlinks{display:none}.hero{padding-top:28px}.hero-grid{gap:28px}
+ .hero h1{font-size:43px}.hero-tagline{font-size:19px}.hero-copy>p{font-size:13px}
+ .hero-actions{display:grid;grid-template-columns:1fr}.hero-actions .btn{width:100%}
+ .art{min-height:340px;border-radius:22px}.art svg{min-height:340px}.art-card{right:12px;left:12px;bottom:12px}
+ .section{padding:46px 0}.sectionhead{display:block}.sectionhead p{margin-top:8px}
+ .idea-grid,.logic-track,.choice-grid,.rolegrid,.mixgrid,.resultgrid{grid-template-columns:1fr}
+ .cta-band{grid-template-columns:1fr}.stagewrap{padding:23px 11px 52px}.maincard{padding:18px}.progress-top{align-items:flex-start}
+ .rolebar{grid-template-columns:70px 1fr 30px}
+}
 </style>
 </head>
 <body>
 
 <div class="view active" id="landing">
-<nav><div class="wrap navrow">
-  <div class="brand"><div class="mark"></div><div><b>رهبر بازتابی</b><span>Reflective Leader</span></div></div>
-  <div class="navhint">از یک موقعیت واقعی شروع کن</div>
-</div></nav>
+  <nav class="topnav">
+    <div class="wrap navrow">
+      <div class="brand"><div class="mark"></div><div><b>رهبر بازتابی</b><span>Reflective Leader</span></div></div>
+      <div class="navlinks">
+        <button onclick="document.getElementById('ideas').scrollIntoView({behavior:'smooth'})">ایده اصلی</button>
+        <button onclick="document.getElementById('booklogic').scrollIntoView({behavior:'smooth'})">منطق کتاب</button>
+        <button onclick="startJourney()">شروع مسیر</button>
+      </div>
+    </div>
+  </nav>
 
-<section class="hero">
-<div class="wrap">
-  <div>
-    <div class="eyebrow">CONTEXT-DRIVEN LEADERSHIP</div>
-    <h1>در این موقعیت،<br>چگونه رهبری کنم؟</h1>
-    <p>یک موقعیت واقعی را وارد کن. قدم‌به‌قدم Context را بررسی می‌کنیم، چهار نقش رهبری را می‌سنجیم و در پایان یک Reflection Result قابل استفاده می‌گیری.</p>
-    <div class="actions">
-      <button class="btn primary" onclick="startJourney()">شروع با یک موقعیت واقعی</button>
-      <button class="btn secondary" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">مسیر را ببین</button>
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">A CONTEXT-DRIVEN LEADERSHIP EXPERIENCE</div>
+        <h1><small>REFLECTIVE LEADER</small>رهبر بازتابی</h1>
+        <div class="hero-tagline">رهبری خوب یک نسخه ثابت نیست.</div>
+        <p>این اپلیکیشن از منطق کتاب <b>The Reflective Leader</b> اثر Armin Trost الهام گرفته است: به‌جای اینکه به تو بگوید «رهبر خوب همیشه چه می‌کند»، کمک می‌کند بفهمی <b>در این موقعیت، برای این تیم و این مسئله، چه نوع رهبری معنا دارد.</b></p>
+        <div class="hero-actions">
+          <button class="btn gold" onclick="startJourney()">اول ببین من چه نوع مدیری هستم</button>
+          <button class="btn ghost" onclick="document.getElementById('booklogic').scrollIntoView({behavior:'smooth'})">منطق کتاب را ببین</button>
+        </div>
+        <div class="hero-note">شروع مسیر با شناخت خودت است؛ بعد به موقعیت، Context، Role Mix و Reflection می‌رسیم.</div>
+      </div>
+
+      <div class="art" aria-label="تصویر نمادین رهبر در حال بازتاب و نگاه به مسیر پیش رو">
+        <svg viewBox="0 0 720 760" role="img" aria-label="رهبر در حال نگاه به چشم‌انداز">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d6e2e7"/><stop offset=".55" stop-color="#efe7d7"/><stop offset="1" stop-color="#d8c7ad"/></linearGradient>
+            <linearGradient id="mount1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8799a0"/><stop offset="1" stop-color="#65767e"/></linearGradient>
+            <linearGradient id="mount2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7b847b"/><stop offset="1" stop-color="#58635e"/></linearGradient>
+            <linearGradient id="river" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1d8a8"/><stop offset="1" stop-color="#b7c9cf"/></linearGradient>
+            <radialGradient id="sun"><stop offset="0" stop-color="#fff1cc"/><stop offset=".35" stop-color="#f1ca83" stop-opacity=".9"/><stop offset="1" stop-color="#f1ca83" stop-opacity="0"/></radialGradient>
+          </defs>
+          <rect width="720" height="760" fill="url(#sky)"/>
+          <circle cx="525" cy="150" r="92" fill="url(#sun)"/>
+          <path d="M0 360 C110 285 190 330 275 280 C360 230 445 265 520 222 C600 178 655 205 720 165 L720 475 L0 475 Z" fill="#aab7ba" opacity=".72"/>
+          <path d="M0 430 C100 345 190 390 275 338 C360 287 440 330 535 285 C610 250 670 270 720 235 L720 560 L0 560 Z" fill="url(#mount1)" opacity=".9"/>
+          <path d="M0 520 C125 430 210 475 315 420 C410 372 495 430 590 375 C650 340 690 350 720 335 L720 760 L0 760 Z" fill="url(#mount2)"/>
+          <path d="M555 245 C510 330 548 390 475 455 C405 520 430 590 350 700" fill="none" stroke="url(#river)" stroke-width="28" stroke-linecap="round" opacity=".86"/>
+          <path d="M75 650 C165 600 220 620 300 580 C360 550 420 565 485 530 C550 495 610 500 720 455 L720 760 L0 760 Z" fill="#374643"/>
+          <ellipse cx="495" cy="625" rx="118" ry="34" fill="#27312f" opacity=".6"/>
+          <circle cx="515" cy="450" r="34" fill="#142434"/>
+          <path d="M472 525 C476 475 493 457 520 456 C550 455 573 482 580 530 L598 627 L452 627 Z" fill="#182b3e"/>
+          <path d="M490 510 C460 535 450 575 439 620" fill="none" stroke="#182b3e" stroke-width="24" stroke-linecap="round"/>
+          <path d="M557 508 C590 545 605 583 622 620" fill="none" stroke="#182b3e" stroke-width="24" stroke-linecap="round"/>
+          <path d="M484 620 C470 650 455 675 442 710" fill="none" stroke="#142434" stroke-width="26" stroke-linecap="round"/>
+          <path d="M555 620 C570 655 590 680 606 711" fill="none" stroke="#142434" stroke-width="26" stroke-linecap="round"/>
+          <circle cx="112" cy="116" r="62" fill="none" stroke="#ffffff" stroke-opacity=".35"/>
+          <circle cx="112" cy="116" r="34" fill="none" stroke="#ffffff" stroke-opacity=".52"/>
+          <circle cx="112" cy="116" r="9" fill="#e6c484"/>
+        </svg>
+        <div class="art-card">
+          <b>سؤال مرکزی اپ</b>
+          <span>«در این موقعیت، چه ایده‌ای از رهبری برای من و تیمم مناسب‌تر است؟»</span>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="start-card" id="how">
-    <div class="label">YOUR JOURNEY</div>
-    <h3>فقط قدم بعدی را ببین</h3>
-    <p>کتاب در پشت تجربه حضور دارد؛ صفحه اول به‌جای فهرست فصل‌ها، مسیر تصمیم را نشان می‌دهد.</p>
-    <div class="mini-flow">
-      <div class="mini-step"><i>1</i><div><b>موقعیت و Context</b><span>Understand before choosing</span></div></div>
-      <div class="mini-step"><i>2</i><div><b>Role Mix</b><span>Boss · Coach · Partner · Enabler</span></div></div>
-      <div class="mini-step"><i>3</i><div><b>Action & Reflection</b><span>Act → observe → learn → adjust</span></div></div>
+  </header>
+
+  <section class="section" id="ideas">
+    <div class="wrap">
+      <div class="sectionhead">
+        <div><div class="kicker">THE BOOK'S STARTING POINT</div><h2>کتاب از «سبک خوب» شروع نمی‌کند</h2></div>
+        <p>شروع کتاب عمداً از زندگی روزمره مدیر است و بعد، قبل از ارائه مدل، چند باور رایج درباره رهبری را به چالش می‌کشد.</p>
+      </div>
+
+      <div class="idea-grid">
+        <div class="idea-card">
+          <div class="n">01 · DAILY LEADERSHIP</div>
+          <h3>رهبری در لحظه‌های کوچک اتفاق می‌افتد</h3>
+          <p>یک ایمیل، یک تصمیم، یک شکایت، یک ایده یا یک کارمند overloaded؛ همان‌جا رهبری واقعی دیده می‌شود.</p>
+          <strong>کتاب: فصل‌های ۱ و ۲</strong>
+        </div>
+        <div class="idea-card">
+          <div class="n">02 · CHALLENGE ASSUMPTIONS</div>
+          <h3>نسخه‌های همیشگی را زیر سؤال ببر</h3>
+          <p>آیا «رهبر خوب همیشه قدردانی می‌کند»، «هرگز micromanage نمی‌کند» یا «همیشه اختیار می‌دهد»؟ کتاب می‌گوید: بستگی دارد.</p>
+          <strong>کتاب: فصل ۳ — نقد نظریه‌ها و توصیه‌های جهان‌شمول</strong>
+        </div>
+        <div class="idea-card">
+          <div class="n">03 · REFLECTIVE ALTERNATIVE</div>
+          <h3>Context را بفهم، بعد Role را انتخاب کن</h3>
+          <p>به‌جای یک سبک ثابت، Context را ببین، Role Mix را آگاهانه بساز و بعد رفتار و ابزار را با آن هم‌راستا کن.</p>
+          <strong>کتاب: فصل‌های ۴ تا ۱۱</strong>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</section>
+  </section>
+
+  <section class="section logic" id="booklogic">
+    <div class="wrap">
+      <div class="sectionhead">
+        <div><div class="kicker">FROM BOOK TO APP</div><h2>منطق کتاب در چهار حرکت</h2></div>
+        <p>فصل‌ها پشت این مسیر حفظ می‌شوند، اما کاربر به‌جای فهرست کتاب، یک journey روشن و کاربردی می‌بیند.</p>
+      </div>
+
+      <div class="logic-track">
+        <div class="logic-step"><div class="num">1</div><h3>Who are you?</h3><p>نقش، تجربه، نوع تیم و پیش‌فرض‌های فعلی خودت را بشناس.</p></div>
+        <div class="logic-step"><div class="num">2</div><h3>Challenge your assumptions</h3><p>قبل از انتخاب سبک، چند باور رایج و نظریه‌محور را critically examine کن.</p></div>
+        <div class="logic-step"><div class="num">3</div><h3>Context → Role Mix</h3><p>موقعیت را تحلیل کن و میان Boss، Coach، Partner و Enabler ترکیب مناسب را بساز.</p></div>
+        <div class="logic-step"><div class="num">4</div><h3>Act → Reflect → Adjust</h3><p>یک رفتار واقعی را امتحان کن، اثرش را ببین و Idea of Leadership را refine کن.</p></div>
+      </div>
+
+      <div class="cta-band" style="margin-top:18px">
+        <div><h3>شروع از خودت؛ نه از یک تست سبک رهبری</h3><p>اول چند سؤال کوتاه درباره نقش مدیریتی، تجربه، تیم و باورهای فعلی‌ات پاسخ بده. بعد وارد منطق کتاب می‌شوی.</p></div>
+        <button class="btn gold" onclick="startJourney()">شروع شناخت خودم</button>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="wrap">Reflective Leader · Context-Driven Leadership Experience · Based on the conceptual model in Armin Trost's The Reflective Leader</div></footer>
 </div>
 
 <div class="view app" id="journey">
-<div class="apphead"><div class="wrap">
-  <div class="brand"><div class="mark"></div><div><b>رهبر بازتابی</b><span>Guided Journey</span></div></div>
-  <button class="backhome" onclick="goHome()">صفحه اصلی</button>
-</div></div>
+  <div class="apphead"><div class="wrap">
+    <div class="brand"><div class="mark"></div><div><b>رهبر بازتابی</b><span>Guided Journey</span></div></div>
+    <button class="backhome" onclick="goHome()">صفحه اصلی</button>
+  </div></div>
 
-<div class="wrap stagewrap">
-  <div class="progress-top"><b id="stageLabel">مرحله ۱ از ۷</b><span>هر مرحله روی مرحله قبل بنا می‌شود</span></div>
-  <div class="bar"><i id="bar"></i></div>
+  <div class="wrap stagewrap">
+    <div class="progress-top"><b id="stageLabel"></b><span>مسیر از خودشناسی و نقد پیش‌فرض‌ها به Context و Role Mix می‌رسد</span></div>
+    <div class="bar"><i id="bar"></i></div>
 
-  <div class="stagegrid">
-    <main class="maincard">
-      <div class="stage-no" id="stageNo">STEP 01</div>
-      <h2 id="stageTitle"></h2>
-      <p class="lead" id="stageLead"></p>
-      <div id="stageBody"></div>
+    <div class="stagegrid">
+      <main class="maincard">
+        <div class="stage-no" id="stageNo"></div>
+        <h2 id="stageTitle"></h2>
+        <p class="lead" id="stageLead"></p>
+        <div id="stageBody"></div>
 
-      <div class="booklogic">
-        <details>
-          <summary>منطق کتاب در پشت این مرحله</summary>
-          <div id="bookRef"></div>
-        </details>
-      </div>
+        <div class="booklogic">
+          <details>
+            <summary>این مرحله از کجای کتاب آمده؟</summary>
+            <div id="bookRef"></div>
+          </details>
+        </div>
 
-      <div class="stage-actions">
-        <button class="prev" id="prevBtn" onclick="prevStage()">مرحله قبل</button>
-        <button class="next" id="nextBtn" onclick="nextStage()">مرحله بعد</button>
-      </div>
-    </main>
+        <div class="stage-actions">
+          <button class="prev" id="prevBtn" onclick="prevStage()">مرحله قبل</button>
+          <button class="next" id="nextBtn" onclick="nextStage()">مرحله بعد</button>
+        </div>
+      </main>
 
-    <aside class="sidecard">
-      <h3>مسیر شما</h3>
-      <div class="pathlist" id="pathList"></div>
-      <div class="note">نتیجه این نسخه یک Reflection Signal است، نه نسخه قطعی یا آزمون شخصیت.</div>
-    </aside>
+      <aside class="sidecard">
+        <h3>مسیر شما</h3>
+        <div class="pathlist" id="pathList"></div>
+        <div class="note">این اپ به‌جای برچسب‌زدن، reflection را facilitate می‌کند. نتیجه یک hypothesis برای فکرکردن و اقدام است، نه تشخیص قطعی.</div>
+      </aside>
+    </div>
   </div>
-</div>
-<footer>Reflective Leader · Functional Guided Prototype · v0.3</footer>
+  <footer>Reflective Leader · Identity-led Functional Prototype · v0.4</footer>
 </div>
 
 <script>
 const state={
- scenario:"",
+ identity:{role:"",experience:"",team:"",scope:""},
+ assumptions:{appreciation:"",empower:"",direct:"",trust:""},
+ challenge:"",
+ situation:"",
  note:"",
- certainty:3,
- selfReg:3,
- shared:3,
- enable:3,
- primary:"",
- secondary:"",
- reflection:"",
- toolChoice:""
+ certainty:3,selfReg:3,shared:3,enable:3,
+ primary:"",secondary:"",reflection:"",toolChoice:""
 };
 let current=0;
 
 const stages=[
- {nav:"موقعیت واقعی",title:"با یک موقعیت واقعی شروع کن",lead:"به‌جای شروع از سبک یا آزمون، یک مسئله روزمره را انتخاب کن.",book:"فصل‌های ۱ تا ۵: از رفتار روزمره و چالش‌های واقعی تا معنای Reflective Leadership و مدل کلی."},
- {nav:"Context",title:"Context را سریع اسکن کن",lead:"چهار نشانه را بسنج. این یک Quick Scan برای Reflection است، نه ارزیابی کامل.",book:"فصل ۶: شناخت ویژگی‌های کار، کارکنان، تیم و جایگاه تیم در سازمان."},
- {nav:"چهار نقش",title:"چهار Role را کنار هم ببین",lead:"هدف پیدا کردن «بهترین سبک» نیست؛ ببین کدام Role در این موقعیت بیشتر معنا پیدا می‌کند.",book:"فصل ۷: Boss، Coach، Partner و Enabler و مقایسه رفتارهای آنها."},
- {nav:"Role Mix",title:"Role Mix خودت را تعریف کن",lead:"پیشنهاد اولیه را ببین، اما انتخاب نهایی با توست. نقش اصلی و نقش پشتیبان را مشخص کن.",book:"فصل ۸: تعریف Idea of Leadership و Role Mix متناسب با Context."},
- {nav:"Idea of Leadership",title:"ایده رهبری‌ات را به زبان روشن تبدیل کن",lead:"اگر نتوانی توضیح بدهی چگونه می‌خواهی رهبری کنی، احتمالاً هنوز ایده‌ات شفاف نشده است.",book:"فصل‌های ۸ و ۹: روشن‌سازی، ارتباط و Reflection درباره Idea of Leadership."},
- {nav:"Action / Tool",title:"رفتار و ابزار را هم‌راستا کن",lead:"حالا یک next move کوچک و قابل مشاهده انتخاب کن.",book:"فصل ۱۰: ابزار رهبری باید با هدف، Context و Idea of Leadership سازگار باشد."},
- {nav:"Reflection Result",title:"خروجی بازتابی تو",lead:"این خروجی پایان کار نیست؛ نقطه شروع مشاهده، یادگیری و تنظیم دوباره رفتار است.",book:"فصل‌های ۹ و ۱۱: Reflection مستمر و تغییر در شیوه فکر کردن درباره رهبری."}
+ {nav:"تو کیستی؟",title:"اول تو را بشناسیم",lead:"قبل از هر مدل، باید بدانیم از چه جایگاهی رهبری می‌کنی. این بخش کوتاه است و قرار نیست به تو برچسب بزند.",book:"پیش‌زمینه کل کتاب و فصل‌های ۱ و ۲: رهبری در زندگی واقعی مدیر رخ می‌دهد، نه در خلأ."},
+ {nav:"واقعیت روزمره",title:"رهبری تو بیشتر کجا خودش را نشان می‌دهد؟",lead:"کتاب از موقعیت‌های روزمره شروع می‌کند: تصمیم، مسئله، همکاری، انگیزش، ایده و تنظیم عمل.",book:"فصل ۲.۵ — Daily Decathlon of Most Leaders و فصل ۱ — رفتار روزمره رهبری."},
+ {nav:"پیش‌فرض‌ها",title:"قبل از نظریه، پیش‌فرض‌هایت را ببین",lead:"فصل ۳ می‌گوید تقریباً برای هر توصیه جذاب درباره «رهبری خوب» می‌توان یک counter-argument معقول ساخت. چند باور خودت را ببین.",book:"فصل ۳ — Common Leadership Theories and Their Limitations؛ نقد توصیه‌های جهان‌شمول و assumptions پنهان."},
+ {nav:"موقعیت واقعی",title:"حالا یک موقعیت واقعی را انتخاب کن",lead:"از کلی‌گویی فاصله بگیریم. یک مسئله مشخص را وارد کن تا بقیه مسیر روی همان ساخته شود.",book:"فصل‌های ۱ و ۲: ترجمه leadership به everyday situations."},
+ {nav:"Context",title:"Context را اسکن کن",lead:"قبل از Role، شرایط را ببین. یک رفتار در دو Context مختلف می‌تواند اثر کاملاً متفاوتی داشته باشد.",book:"فصل ۶ — ویژگی‌های کار، کارکنان، تیم و embeddedness در سازمان."},
+ {nav:"چهار Role",title:"چهار نقش را کنار هم ببین",lead:"Boss، Coach، Partner و Enabler چهار رفتار متمایزند؛ هیچ‌کدام ذاتاً همیشه خوب یا همیشه بد نیست.",book:"فصل ۷ — Four Different and Distinct Leadership Roles."},
+ {nav:"Role Mix",title:"Idea of Leadership خودت را بساز",lead:"Role Mix پیشنهادی را ببین، اما انتخاب نهایی با توست. Context، تجربه، competence و انتظارات را کنار هم بگذار.",book:"فصل ۸ — Defining a Suitable Idea of Leadership و Most Suitable Role Mix."},
+ {nav:"Action & Reflection",title:"یک اقدام انتخاب کن و بعد بازتاب کن",lead:"رهبری بازتابی یعنی رفتار را امتحان کنی، اثر را ببینی و ایده‌ات را دوباره تنظیم کنی.",book:"فصل‌های ۹ تا ۱۱ — Reflection مستمر، ابزارهای سازگار و تغییر شیوه فکر کردن به رهبری."}
 ];
 
 const roleMeta={
- boss:{fa:"رئیس",en:"Boss",pronoun:"I / من",desc:"انتظار را روشن می‌کنم، تصمیم می‌گیرم و مسئولیت پاسخ و کنترل را می‌پذیرم."},
- coach:{fa:"مربی",en:"Coach",pronoun:"You / تو",desc:"با سؤال، فرد را به فکرکردن، تصمیم‌گیری و خودتنظیمی بیشتر دعوت می‌کنم."},
- partner:{fa:"شریک",en:"Partner",pronoun:"We / ما",desc:"مسئولیت، مسئله و تصمیم را تا حد ممکن مشترک و مشارکتی پیش می‌بریم."},
- enabler:{fa:"توانمندساز",en:"Enabler",pronoun:"Them / آنها",desc:"روی شرایط، منابع، ساختار و موانعی تمرکز می‌کنم که عملکرد بهتر را ممکن می‌کند."}
+ boss:{fa:"رئیس",en:"Boss",pronoun:"I / من",desc:"انتظار و تصمیم را روشن می‌کنم، پاسخ می‌دهم و مسئولیت مستقیم بیشتری می‌پذیرم."},
+ coach:{fa:"مربی",en:"Coach",pronoun:"You / تو",desc:"با سؤال و challenge، فرد را به فکرکردن، تصمیم‌گیری و self-regulation بیشتر دعوت می‌کنم."},
+ partner:{fa:"شریک",en:"Partner",pronoun:"We / ما",desc:"مسئله، تصمیم و مسئولیت را تا حد ممکن مشترک و مشارکتی پیش می‌بریم."},
+ enabler:{fa:"توانمندساز",en:"Enabler",pronoun:"Them / آنها",desc:"روی منابع، ساختار، شرایط و موانعی تمرکز می‌کنم که عملکرد بهتر را ممکن می‌کند."}
 };
 
 function startJourney(){
  document.getElementById("landing").classList.remove("active");
  document.getElementById("journey").classList.add("active");
- current=0;render();
- window.scrollTo({top:0,behavior:"smooth"});
+ current=0;render();window.scrollTo({top:0,behavior:"smooth"});
 }
 function goHome(){
  document.getElementById("journey").classList.remove("active");
  document.getElementById("landing").classList.add("active");
  window.scrollTo({top:0,behavior:"smooth"});
 }
-function setScenario(v,el){
- state.scenario=v;
- document.querySelectorAll(".scenario").forEach(x=>x.classList.remove("active"));
- el.classList.add("active");
+function selectChoice(selector,value,el,store){
+ document.querySelectorAll(selector).forEach(x=>x.classList.remove("active"));el.classList.add("active");store(value);saveState();
 }
-function setRange(k,v){state[k]=Number(v);saveState()}
-function saveNote(v){state.note=v;saveState()}
-function saveState(){localStorage.setItem("reflectiveLeaderV03",JSON.stringify(state))}
-function roleScores(){
- const s={
-   boss:Math.max(1,Math.round((state.certainty*1.35 + (6-state.selfReg)*0.65)/2)),
-   coach:Math.max(1,Math.round((state.selfReg*1.25 + (6-state.certainty)*0.35 + 1)/2)),
-   partner:Math.max(1,Math.round((state.shared*1.45 + state.selfReg*0.35)/1.8)),
-   enabler:Math.max(1,Math.round((state.enable*1.5 + state.selfReg*0.25)/1.75))
- };
- Object.keys(s).forEach(k=>s[k]=Math.min(5,s[k]));
- return s;
-}
-function rankedRoles(){
- const s=roleScores();
- return Object.keys(s).sort((a,b)=>s[b]-s[a]);
-}
-function scenarioName(){
- return {idea:"ایده جدید یک همکار",complaint:"یک شکایت یا مسئله داخلی",overload:"فشار و اضافه‌بار کاری",decision:"یک تصمیم دشوار",other:"موقعیت دیگر"}[state.scenario]||"موقعیت انتخاب‌شده";
-}
-function roleName(k){return roleMeta[k]?.fa||"—"}
-
-function stage1(){
+function idStage(){
+ const i=state.identity;
  return `
- <div class="question">
-   <strong>کدام موقعیت به مسئله امروزت نزدیک‌تر است؟</strong>
-   <div class="choice-grid">
-     <button class="choice scenario ${state.scenario==="idea"?"active":""}" onclick="setScenario('idea',this)">یک همکار ایده‌ای آورده</button>
-     <button class="choice scenario ${state.scenario==="complaint"?"active":""}" onclick="setScenario('complaint',this)">یک شکایت یا مسئله داخلی داریم</button>
-     <button class="choice scenario ${state.scenario==="overload"?"active":""}" onclick="setScenario('overload',this)">یکی از افراد زیر فشار یا overload است</button>
-     <button class="choice scenario ${state.scenario==="decision"?"active":""}" onclick="setScenario('decision',this)">یک تصمیم دشوار باید گرفته شود</button>
-     <button class="choice scenario ${state.scenario==="other"?"active":""}" onclick="setScenario('other',this)">موقعیت دیگری دارم</button>
-   </div>
+ <div class="question"><strong>نقش فعلی تو چیست؟</strong><div class="choice-grid">
+  ${["مدیر ارشد","مدیر میانی","سرپرست / Team Lead","مدیر پروژه / نقش بدون اختیار رسمی"].map(v=>`<button class="choice idrole ${i.role===v?"active":""}" onclick="selectChoice('.idrole','${v}',this,x=>state.identity.role=x)">${v}</button>`).join("")}
+ </div></div>
+ <div class="question"><strong>چند سال تجربه هدایت دیگران داری؟</strong><div class="choice-grid">
+  ${["کمتر از ۲ سال","۲ تا ۵ سال","۶ تا ۱۰ سال","بیش از ۱۰ سال"].map(v=>`<button class="choice idexp ${i.experience===v?"active":""}" onclick="selectChoice('.idexp','${v}',this,x=>state.identity.experience=x)">${v}</button>`).join("")}
+ </div></div>
+ <div class="question"><strong>تیم یا محیط تو بیشتر شبیه کدام است؟</strong><div class="choice-grid">
+  ${["کار استاندارد و نسبتاً پایدار","کار تخصصی و حرفه‌ای","محیط پروژه‌ای و بین‌وظیفه‌ای","محیط پرابهام و تغییرپذیر"].map(v=>`<button class="choice idteam ${i.team===v?"active":""}" onclick="selectChoice('.idteam','${v}',this,x=>state.identity.team=x)">${v}</button>`).join("")}
+ </div></div>
+ <div class="reflectbox"><b>این بخش برای چیست؟</b><p>کتاب به‌جای یک نسخه واحد، تفاوت Contextها را جدی می‌گیرد. این اطلاعات فقط framing اولیه مسیر را می‌سازد.</p></div>`;
+}
+function dailyStage(){
+ const opts=[
+ ["problem","حل مسئله"],["decision","تصمیم‌گیری"],["tasks","توزیع کار"],["results","شفاف‌کردن نتیجه"],
+ ["process","هماهنگی فرایند"],["collab","همکاری و تعارض"],["motivate","انگیزش"],["potential","رشد و توسعه"],
+ ["ideas","ایده‌ها و نوآوری"],["regulate","پیگیری و اصلاح مسیر"]
+ ];
+ return `<div class="question"><strong>بیشتر وقت مدیریتی تو الان درگیر کدام challenge است؟</strong><div class="choice-grid">
+ ${opts.map(([k,v])=>`<button class="choice daily ${state.challenge===k?"active":""}" onclick="selectChoice('.daily','${k}',this,x=>state.challenge=x)">${v}</button>`).join("")}
+ </div><div class="mini-copy">این ده مورد از «Daily Decathlon» کتاب گرفته شده‌اند؛ نه به‌عنوان taxonomy علمی، بلکه به‌عنوان تصویر عملی از زندگی روزمره مدیر.</div></div>`;
+}
+function assumptionCard(k,text){
+ const val=state.assumptions[k];
+ return `<div class="challenge"><div class="statement">${text}</div><div class="agree-row">
+  ${["کاملاً موافقم","تا حدی موافقم","بستگی دارد","تا حدی مخالفم","کاملاً مخالفم"].map(v=>`<button class="${val===v?"active":""}" onclick="state.assumptions['${k}']='${v}';saveState();render()">${v}</button>`).join("")}
+ </div></div>`;
+}
+function assumptionsStage(){
+ return `<div class="challenge-grid">
+  ${assumptionCard("appreciation","«رهبری خوب همیشه نیازمند قدردانی و appreciation است.»")}
+  ${assumptionCard("empower","«رهبر خوب باید تا حد ممکن اختیار بدهد و افراد را empower کند.»")}
+  ${assumptionCard("direct","«دستور مستقیم و تصمیم‌گیری یک‌طرفه نشانه رهبری ضعیف است.»")}
+  ${assumptionCard("trust","«اعتماد بیشتر تقریباً همیشه نتیجه بهتری می‌سازد.»")}
  </div>
- <div class="question">
-   <label>در یک یا دو جمله، موقعیت را برای خودت روشن کن</label>
-   <textarea placeholder="مثلاً: یکی از مدیران باتجربه تیم با تصمیم جدید موافق نیست..." oninput="saveNote(this.value)">${state.note||""}</textarea>
- </div>`;
+ <div class="reflectbox"><b>Challenge from the book</b><p>کتاب نمی‌گوید این گزاره‌ها غلط‌اند؛ می‌گوید هرکدام assumptions پنهانی دارند و بدون Context نباید universal rule شوند.</p></div>`;
+}
+function situationStage(){
+ const opts=[
+ ["idea","یک همکار ایده‌ای آورده"],["complaint","یک شکایت یا مسئله داخلی داریم"],
+ ["overload","یکی از افراد overloaded است"],["decision","یک تصمیم دشوار باید گرفته شود"],["conflict","در تیم تعارض داریم"],["other","موقعیت دیگری دارم"]
+ ];
+ return `<div class="question"><strong>کدام موقعیت به مسئله واقعی امروزت نزدیک‌تر است؟</strong><div class="choice-grid">
+ ${opts.map(([k,v])=>`<button class="choice situation ${state.situation===k?"active":""}" onclick="selectChoice('.situation','${k}',this,x=>state.situation=x)">${v}</button>`).join("")}
+ </div></div>
+ <div class="question"><label>در یک یا دو جمله موقعیت را بنویس</label><textarea placeholder="مثلاً: یکی از اعضای باتجربه تیم با تصمیم جدید مخالف است و جلسه‌ها به بن‌بست می‌رسد..." oninput="state.note=this.value;saveState()">${state.note||""}</textarea></div>`;
 }
 function slider(k,title,sub,left,right){
- return `<div class="slider-row"><div><b>${title}</b><span>${sub}</span></div><div><input type="range" min="1" max="5" value="${state[k]}" oninput="setRange('${k}',this.value);this.nextElementSibling.querySelector('b').textContent=this.value"><div class="scale-labels"><span>${left}</span><b>${state[k]}</b><span>${right}</span></div></div></div>`;
+ return `<div class="slider-row"><div><b>${title}</b><span>${sub}</span></div><div><input type="range" min="1" max="5" value="${state[k]}" oninput="state['${k}']=Number(this.value);saveState();this.nextElementSibling.querySelector('b').textContent=this.value"><div class="scale-labels"><span>${left}</span><b>${state[k]}</b><span>${right}</span></div></div></div>`;
 }
-function stage2(){
- return `<div class="question">
- <strong>Quick Context Scan</strong>
- ${slider("certainty","نیاز به قطعیت و تصمیم روشن","الان چقدر لازم است جهت، استاندارد یا تصمیم مشخص باشد؟","کم","زیاد")}
- ${slider("selfReg","آمادگی برای خودتنظیمی","فرد یا تیم چقدر می‌تواند مستقل فکر کند و مسئولیت بپذیرد؟","کم","زیاد")}
- ${slider("shared","نیاز به مالکیت مشترک","این مسئله چقدر به مشارکت، گفت‌وگو و تصمیم جمعی نیاز دارد؟","کم","زیاد")}
- ${slider("enable","نیاز به شرایط و منابع بهتر","چقدر مسئله ناشی از ساختار، منابع، زمان، یادگیری یا موانع محیطی است؟","کم","زیاد")}
+function contextStage(){
+ return `<div class="question"><strong>Quick Context Scan</strong>
+ ${slider("certainty","نیاز به قطعیت و direction","الان چقدر لازم است استاندارد، پاسخ یا تصمیم روشن باشد؟","کم","زیاد")}
+ ${slider("selfReg","توان self-regulation","فرد یا تیم چقدر می‌تواند مستقل فکر کند و مسئولیت بپذیرد؟","کم","زیاد")}
+ ${slider("shared","نیاز به ownership مشترک","این مسئله چقدر به مشارکت، dialogue و تصمیم جمعی نیاز دارد؟","کم","زیاد")}
+ ${slider("enable","نیاز به شرایط و منابع","چقدر مسئله ناشی از ساختار، منابع، زمان، learning یا موانع محیطی است؟","کم","زیاد")}
  </div>`;
 }
-function roleCard(k,reco){
- const r=roleMeta[k];
- return `<div class="rolecard ${reco?"reco":""}">${reco?'<span class="tag">Signal قوی‌تر</span>':""}<h3>${r.fa} <small style="font-size:10px;color:#82909d">/ ${r.en}</small></h3><div class="pronoun">${r.pronoun}</div><p>${r.desc}</p></div>`;
+function roleScores(){
+ const s={
+  boss:Math.max(1,Math.round((state.certainty*1.35+(6-state.selfReg)*.65)/2)),
+  coach:Math.max(1,Math.round((state.selfReg*1.25+(6-state.certainty)*.35+1)/2)),
+  partner:Math.max(1,Math.round((state.shared*1.45+state.selfReg*.35)/1.8)),
+  enabler:Math.max(1,Math.round((state.enable*1.5+state.selfReg*.25)/1.75))
+ };
+ Object.keys(s).forEach(k=>s[k]=Math.min(5,s[k]));return s;
 }
-function stage3(){
+function rankedRoles(){const s=roleScores();return Object.keys(s).sort((a,b)=>s[b]-s[a])}
+function roleCard(k,reco){const r=roleMeta[k];return `<div class="rolecard ${reco?"reco":""}">${reco?'<span class="tag">Signal قوی‌تر</span>':""}<h3>${r.fa} <small style="font-size:10px;color:#82909d">/ ${r.en}</small></h3><div class="pronoun">${r.pronoun}</div><p>${r.desc}</p></div>`}
+function rolesStage(){
  const scores=roleScores(),rank=rankedRoles();
- return `<div class="rolegrid">
- ${roleCard("boss",rank[0]==="boss")}
- ${roleCard("coach",rank[0]==="coach")}
- ${roleCard("partner",rank[0]==="partner")}
- ${roleCard("enabler",rank[0]==="enabler")}
- </div>
- <div class="rolebars">
- ${["boss","coach","partner","enabler"].map(k=>`<div class="rolebar"><b>${roleMeta[k].fa}</b><div class="track"><i style="width:${scores[k]*20}%"></i></div><span>${scores[k]}/5</span></div>`).join("")}
- </div>
- <div class="reflectq"><b>این نمره «تشخیص» نیست.</b><p>فقط نشان می‌دهد با پاسخ‌های فعلی، کدام Role ارزش بررسی بیشتری دارد. Context واقعی می‌تواند پیچیده‌تر باشد.</p></div>`;
+ return `<div class="rolegrid">${["boss","coach","partner","enabler"].map(k=>roleCard(k,rank[0]===k)).join("")}</div>
+ <div class="rolebars">${["boss","coach","partner","enabler"].map(k=>`<div class="rolebar"><b>${roleMeta[k].fa}</b><div class="track"><i style="width:${scores[k]*20}%"></i></div><span>${scores[k]}/5</span></div>`).join("")}</div>
+ <div class="reflectbox"><b>این نتیجه «سبک تو» نیست.</b><p>فقط می‌گوید در این Context، کدام Role ارزش بررسی بیشتری دارد. کتاب عمداً با ایده یک سبک ثابت فاصله می‌گیرد.</p></div>`;
 }
-function options(selected){
- return Object.keys(roleMeta).map(k=>`<option value="${k}" ${selected===k?"selected":""}>${roleMeta[k].fa} / ${roleMeta[k].en}</option>`).join("");
-}
-function stage4(){
- const rank=rankedRoles();
- if(!state.primary) state.primary=rank[0];
- if(!state.secondary) state.secondary=rank[1];
+function options(sel){return Object.keys(roleMeta).map(k=>`<option value="${k}" ${sel===k?"selected":""}>${roleMeta[k].fa} / ${roleMeta[k].en}</option>`).join("")}
+function roleName(k){return roleMeta[k]?.fa||"—"}
+function ideaText(){return `در این موقعیت، می‌خواهم عمدتاً در نقش «${roleName(state.primary)}» عمل کنم و نقش «${roleName(state.secondary)}» را به‌عنوان پشتیبان نگه دارم. این انتخاب را بر اساس Context انجام می‌دهم، نه به‌عنوان یک سبک ثابت.`}
+function mixStage(){
+ const rank=rankedRoles();if(!state.primary)state.primary=rank[0];if(!state.secondary)state.secondary=rank[1];
  return `<div class="mixgrid">
- <div class="mixbox"><label>Role اصلی</label><select onchange="state.primary=this.value;saveState();renderIdeaPreview()">${options(state.primary)}</select></div>
- <div class="mixbox"><label>Role پشتیبان</label><select onchange="state.secondary=this.value;saveState();renderIdeaPreview()">${options(state.secondary)}</select></div>
+ <div class="mixbox"><label>Role اصلی</label><select onchange="state.primary=this.value;saveState();render()">${options(state.primary)}</select></div>
+ <div class="mixbox"><label>Role پشتیبان</label><select onchange="state.secondary=this.value;saveState();render()">${options(state.secondary)}</select></div>
  </div>
- <div class="question" style="margin-top:13px"><strong>اصل مهم</strong><div style="font-size:11px;color:var(--muted)">Role Mix یک انتخاب آگاهانه است؛ پیشنهاد سیستم فقط starting point است. اگر تجربه و شواهدت چیز دیگری می‌گوید، آن را تغییر بده.</div></div>
- <div id="ideaPreview"></div>`;
-}
-function ideaText(){
- return `در این موقعیت، می‌خواهم عمدتاً در نقش «${roleName(state.primary)}» عمل کنم و در صورت نیاز از نقش «${roleName(state.secondary)}» کمک بگیرم. هدفم این است که رفتارم با Context هماهنگ باشد، نه با یک سبک ثابت.`;
-}
-function renderIdeaPreview(){
- const el=document.getElementById("ideaPreview");if(el)el.innerHTML=`<div class="idea" style="margin-top:13px"><b>Role Mix فعلی:</b><br>${ideaText()}</div>`;
-}
-function stage5(){
- return `<div class="idea"><b>Idea of Leadership — نسخه فعلی</b><br>${ideaText()}</div>
- <div class="question">
-   <label>یک جمله اضافه کن: در این موقعیت نمی‌خواهم چه رفتاری از من دیده شود؟</label>
-   <textarea placeholder="مثلاً: نمی‌خواهم فقط برای تمام مسئله‌ها خودم جواب آماده بدهم..." oninput="state.reflection=this.value;saveState()">${state.reflection||""}</textarea>
- </div>
- <div class="reflectq"><b>Reflection Prompt</b><p>اگر یکی از اعضای تیمت رفتار تو را توصیف کند، آیا همان Role Mix را خواهد دید که خودت قصدش را داری؟</p></div>`;
+ <div class="idea" style="margin-top:12px"><b>Idea of Leadership — draft</b><br>${ideaText()}</div>
+ <div class="question"><label>چه رفتاری نمی‌خواهی از تو دیده شود؟</label><textarea placeholder="مثلاً: نمی‌خواهم برای هر مسئله فوراً خودم جواب بدهم..." oninput="state.reflection=this.value;saveState()">${state.reflection||""}</textarea></div>`;
 }
 function actionFor(k){
  const map={
-   boss:["انتظار و تصمیم را شفاف کن","یک تصمیم یا استاندارد روشن بیان کن و مشخص کن چه چیزی، تا چه زمانی و با چه کیفیتی انتظار می‌رود."],
-   coach:["به‌جای جواب، یک سؤال قوی بپرس","از فرد بخواه راه‌حل، گزینه‌ها و منطق خودش را مطرح کند و مسئولیت فکرکردن را نگه دارد."],
-   partner:["مسئله را روی میز مشترک بگذار","افراد مرتبط را وارد گفت‌وگو کن و برای یک تصمیم یا راه‌حل مشترک فضای واقعی بساز."],
-   enabler:["یک مانع را بردار","ببین فرد یا تیم برای عملکرد بهتر چه منبع، زمان، ساختار، یادگیری یا امنیتی نیاز دارد."]
- };
- return map[k]||["یک اقدام روشن انتخاب کن","اقدامی انتخاب کن که با Context و Role Mix تو سازگار باشد."];
+  boss:["جهت و انتظار را روشن کن","یک تصمیم یا استاندارد روشن اعلام کن و مسئولیت پیگیری آن را بپذیر."],
+  coach:["یک سؤال قوی بپرس","از فرد بخواه راه‌حل، گزینه‌ها و منطق خودش را مطرح کند."],
+  partner:["مسئله را مشترک کن","افراد مرتبط را وارد گفت‌وگو کن و برای یک راه‌حل مشترک فضا بساز."],
+  enabler:["یک مانع را بردار","منبع، زمان، ساختار یا support لازم برای عملکرد بهتر را فراهم کن."]
+ };return map[k]
 }
-function stage6(){
+function strongestSignal(){return [["قطعیت و جهت روشن",state.certainty],["self-regulation",state.selfReg],["ownership مشترک",state.shared],["شرایط و منابع",state.enable]].sort((a,b)=>b[1]-a[1])[0][0]}
+function challengeName(){
+ const m={problem:"حل مسئله",decision:"تصمیم‌گیری",tasks:"توزیع کار",results:"شفاف‌کردن نتیجه",process:"هماهنگی فرایند",collab:"همکاری و تعارض",motivate:"انگیزش",potential:"رشد و توسعه",ideas:"ایده‌ها و نوآوری",regulate:"پیگیری و اصلاح مسیر"};return m[state.challenge]||"—"
+}
+function actionStage(){
  const a1=actionFor(state.primary),a2=actionFor(state.secondary);
+ if(!state.toolChoice)state.toolChoice="primary";
  return `<div class="actioncards">
- <button class="actioncard ${state.toolChoice==="primary"?"choice active":""}" onclick="state.toolChoice='primary';saveState();render()"><b>${a1[0]}</b><span>${a1[1]}</span></button>
- <button class="actioncard ${state.toolChoice==="secondary"?"choice active":""}" onclick="state.toolChoice='secondary';saveState();render()"><b>${a2[0]}</b><span>${a2[1]}</span></button>
- <button class="actioncard ${state.toolChoice==="custom"?"choice active":""}" onclick="state.toolChoice='custom';saveState();render()"><b>اقدام خودم را طراحی می‌کنم</b><span>اگر تجربه‌ات نشان می‌دهد next move دیگری مناسب‌تر است، آن را انتخاب کن.</span></button>
+  <button class="actioncard ${state.toolChoice==="primary"?"choice active":""}" onclick="state.toolChoice='primary';saveState();render()"><b>${a1[0]}</b><span>${a1[1]}</span></button>
+  <button class="actioncard ${state.toolChoice==="secondary"?"choice active":""}" onclick="state.toolChoice='secondary';saveState();render()"><b>${a2[0]}</b><span>${a2[1]}</span></button>
+  <button class="actioncard ${state.toolChoice==="custom"?"choice active":""}" onclick="state.toolChoice='custom';saveState();render()"><b>Next Move خودم را طراحی می‌کنم</b><span>اگر تجربه و شواهدت اقدام دیگری را مناسب‌تر نشان می‌دهد، آن را انتخاب کن.</span></button>
  </div>
- <div class="reflectq"><b>معیار انتخاب</b><p>Next move باید کوچک، قابل مشاهده و قابل بازبینی باشد؛ چیزی که بتوانی بعداً اثرش را ببینی و درباره‌اش Reflection کنی.</p></div>`;
-}
-function chosenAction(){
- if(state.toolChoice==="primary")return actionFor(state.primary)[0];
- if(state.toolChoice==="secondary")return actionFor(state.secondary)[0];
- if(state.toolChoice==="custom")return "اقدام شخصی‌سازی‌شده";
- return actionFor(state.primary)[0];
-}
-function stage7(){
- const scores=roleScores();
- return `<div class="result">
- <h3>Leadership Reflection Result</h3>
- <div class="sub">خلاصه‌ای برای فکرکردن، نه یک برچسب ثابت.</div>
- <div class="resultgrid">
-   <div class="resultitem"><label>موقعیت</label><b>${scenarioName()}</b></div>
+ <div class="result" style="margin-top:14px">
+  <h3>Reflection Snapshot</h3><div class="sub">خلاصه‌ای برای اقدام و بازبینی</div>
+  <div class="resultgrid">
+   <div class="resultitem"><label>نقش و تجربه</label><b>${state.identity.role||"—"} · ${state.identity.experience||"—"}</b></div>
+   <div class="resultitem"><label>Daily Challenge</label><b>${challengeName()}</b></div>
    <div class="resultitem"><label>Role Mix</label><b>${roleName(state.primary)} + ${roleName(state.secondary)}</b></div>
-   <div class="resultitem"><label>قوی‌ترین Context Signal</label><b>${strongestSignal()}</b></div>
-   <div class="resultitem"><label>Next Move</label><b>${chosenAction()}</b></div>
- </div>
- <div class="rolebars" style="margin-top:15px">
- ${["boss","coach","partner","enabler"].map(k=>`<div class="rolebar"><b>${roleMeta[k].fa}</b><div class="track"><i style="width:${scores[k]*20}%"></i></div><span>${scores[k]}/5</span></div>`).join("")}
- </div>
- <div class="reflectq"><b>سؤال بازتابی بعد از اقدام</b><p>رفتار من چه اثری روی مسئولیت‌پذیری، کیفیت تصمیم، یادگیری و عملکرد تیم گذاشت؟ دفعه بعد چه چیزی را حفظ یا تغییر می‌دهم؟</p></div>
- </div>
- <div class="question"><strong>موقعیت ثبت‌شده تو</strong><div style="font-size:11px;color:var(--muted)">${state.note?escapeHtml(state.note):"هنوز توضیحی ثبت نشده است."}</div></div>`;
+   <div class="resultitem"><label>Strongest Context Signal</label><b>${strongestSignal()}</b></div>
+  </div>
+  <div class="reflectbox"><b>سؤال بعد از اقدام</b><p>رفتار من چه اثری روی مسئولیت‌پذیری، کیفیت تصمیم، یادگیری و عملکرد تیم گذاشت؟ دفعه بعد چه چیزی را حفظ یا تغییر می‌دهم؟</p></div>
+ </div>`;
 }
-function strongestSignal(){
- const arr=[["قطعیت و جهت روشن",state.certainty],["خودتنظیمی فرد/تیم",state.selfReg],["مالکیت مشترک",state.shared],["شرایط و منابع",state.enable]].sort((a,b)=>b[1]-a[1]);
- return arr[0][0];
-}
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
-
-function bodyFor(i){
- return [stage1,stage2,stage3,stage4,stage5,stage6,stage7][i]();
-}
+function bodyFor(i){return [idStage,dailyStage,assumptionsStage,situationStage,contextStage,rolesStage,mixStage,actionStage][i]()}
 function validate(){
- if(current===0 && !state.scenario){alert("اول یک موقعیت را انتخاب کن.");return false}
+ if(current===0 && (!state.identity.role||!state.identity.experience||!state.identity.team)){alert("سه سؤال کوتاه این مرحله را کامل کن.");return false}
+ if(current===1 && !state.challenge){alert("یک challenge روزمره را انتخاب کن.");return false}
+ if(current===3 && !state.situation){alert("یک موقعیت واقعی را انتخاب کن.");return false}
  return true;
 }
 function render(){
  const s=stages[current];
  document.getElementById("stageLabel").textContent="مرحله "+(current+1)+" از "+stages.length;
  document.getElementById("stageNo").textContent="STEP "+String(current+1).padStart(2,"0");
- document.getElementById("stageTitle").textContent=s.title;
- document.getElementById("stageLead").textContent=s.lead;
- document.getElementById("bookRef").textContent=s.book;
+ document.getElementById("stageTitle").textContent=s.title;document.getElementById("stageLead").textContent=s.lead;document.getElementById("bookRef").textContent=s.book;
  document.getElementById("bar").style.width=((current+1)/stages.length*100)+"%";
  document.getElementById("stageBody").innerHTML=bodyFor(current);
  document.getElementById("prevBtn").style.visibility=current===0?"hidden":"visible";
- document.getElementById("nextBtn").textContent=current===stages.length-1?"شروع یک موقعیت جدید":"مرحله بعد";
+ document.getElementById("nextBtn").textContent=current===stages.length-1?"شروع دوباره":"مرحله بعد";
  document.getElementById("nextBtn").onclick=current===stages.length-1?resetJourney:nextStage;
  const list=document.getElementById("pathList");list.innerHTML="";
  stages.forEach((x,i)=>{const d=document.createElement("div");d.className="pathitem "+(i===current?"current":i<current?"done":"");d.textContent=(i+1)+". "+x.nav;list.appendChild(d)});
- if(current===3)renderIdeaPreview();
  saveState();
 }
 function nextStage(){if(!validate())return;if(current<stages.length-1){current++;render();window.scrollTo({top:0,behavior:"smooth"})}}
 function prevStage(){if(current>0){current--;render();window.scrollTo({top:0,behavior:"smooth"})}}
 function resetJourney(){
- Object.assign(state,{scenario:"",note:"",certainty:3,selfReg:3,shared:3,enable:3,primary:"",secondary:"",reflection:"",toolChoice:""});
- localStorage.removeItem("reflectiveLeaderV03");current=0;render();window.scrollTo({top:0,behavior:"smooth"});
+ state.identity={role:"",experience:"",team:"",scope:""};state.assumptions={appreciation:"",empower:"",direct:"",trust:""};
+ state.challenge="";state.situation="";state.note="";state.certainty=3;state.selfReg=3;state.shared=3;state.enable=3;state.primary="";state.secondary="";state.reflection="";state.toolChoice="";
+ localStorage.removeItem("reflectiveLeaderV04");current=0;render();window.scrollTo({top:0,behavior:"smooth"});
 }
-try{
- const saved=JSON.parse(localStorage.getItem("reflectiveLeaderV03")||"null");
- if(saved)Object.assign(state,saved);
-}catch(e){}
+function saveState(){localStorage.setItem("reflectiveLeaderV04",JSON.stringify(state))}
+try{const saved=JSON.parse(localStorage.getItem("reflectiveLeaderV04")||"null");if(saved)Object.assign(state,saved)}catch(e){}
 </script>
 </body>
 </html>
